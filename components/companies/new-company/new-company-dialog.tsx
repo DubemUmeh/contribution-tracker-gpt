@@ -31,7 +31,7 @@ import {
   OWNERS,
   SEGMENTS,
   STAGES,
-  type Company,
+  type Event,
   type Segment,
   type Stage,
 } from "@/data/companies";
@@ -118,9 +118,9 @@ export default function NewCompanyDialog() {
       >
         <form onSubmit={handleSubmit} noValidate className="flex flex-col">
           <DialogHeader>
-            <DialogTitle>New Company</DialogTitle>
+            <DialogTitle>New Event</DialogTitle>
             <DialogDescription>
-              Add a company to the pipeline. It appears in the list right away.
+              Create a contribution event for the class.
             </DialogDescription>
           </DialogHeader>
 
@@ -132,8 +132,8 @@ export default function NewCompanyDialog() {
             />
 
             <Field
-              label="Company name"
-              htmlFor="company-name"
+              label="Event title"
+              htmlFor="event-name"
               required
               error={nameError ?? undefined}
             >
@@ -192,8 +192,8 @@ export default function NewCompanyDialog() {
             </div>
           </FormSection>
 
-          <FormSection title="Ownership & deal">
-            <Field label="Account owner" htmlFor="company-owner">
+          <FormSection title="Event details">
+            <Field label="Recipient / administrator" htmlFor="company-owner">
               <Select
                 value={form.owner}
                 onValueChange={(value) => update("owner", value)}
@@ -215,7 +215,7 @@ export default function NewCompanyDialog() {
             </Field>
 
             <div className="grid gap-4 sm:grid-cols-2">
-              <Field label="Pipeline value" htmlFor="company-pipeline">
+              <Field label="Target amount" htmlFor="company-pipeline">
                 <div className="relative">
                   <span
                     aria-hidden
@@ -238,7 +238,7 @@ export default function NewCompanyDialog() {
                   />
                 </div>
               </Field>
-              <Field label="Open deals" htmlFor="company-deals">
+              <Field label="Contributor count" htmlFor="company-deals">
                 <Input
                   id="company-deals"
                   type="number"
@@ -252,7 +252,7 @@ export default function NewCompanyDialog() {
             </div>
 
             <Field
-              label="Win probability"
+              label="Participation target"
               htmlFor="company-win"
               trailing={
                 <span className="caption-style text-foreground tabular-nums">
@@ -281,7 +281,7 @@ export default function NewCompanyDialog() {
             </Field>
           </FormSection>
 
-          <FormSection title="Last interaction">
+          <FormSection title="Event date">
             <div className="grid gap-4 sm:grid-cols-2">
               <Field label="Date" htmlFor="company-interaction-date">
                 <Input
@@ -323,7 +323,7 @@ export default function NewCompanyDialog() {
             </DialogClose>
             <Button variant="primary" size="sm" type="submit">
               <PlusIcon aria-hidden className="size-3" />
-              Create Company
+              Create Event
             </Button>
           </DialogFooter>
         </form>

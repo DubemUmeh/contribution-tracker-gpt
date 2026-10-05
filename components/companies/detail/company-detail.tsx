@@ -58,7 +58,7 @@ export default function ClassmateDetail() {
             <SheetTitle>Classmate Details</SheetTitle>
           </div>
           <SheetDescription className="sr-only">
-            Account summary, pipeline health, activity and score cards
+            Contribution summary, pipeline health, activity and score cards
           </SheetDescription>
           <SheetClose asChild>
             <Button
@@ -104,7 +104,7 @@ export default function ClassmateDetail() {
               </div>
             </div>
 
-            <DetailSection title="Account summary">
+            <DetailSection title="Contribution summary">
               <div className="lead-style flex flex-wrap items-center gap-x-4 gap-y-3">
                 <Button
                   variant="ghost"
@@ -127,12 +127,12 @@ export default function ClassmateDetail() {
               </div>
             </DetailSection>
 
-            <DetailSection title="Pipeline health">
+            <DetailSection title="Contribution history">
               <PipelineHealth classmate={classmate} />
             </DetailSection>
 
             <DetailSection
-              title="Activity trend"
+              title="Contribution trend"
               action={
                 <FilterMenu
                   value={trendWindow}
@@ -146,7 +146,7 @@ export default function ClassmateDetail() {
             </DetailSection>
 
             <DetailSection
-              title="Score card"
+              title="Contribution status"
               className="gap-3 shadow-none"
               action={
                 <FilterMenu

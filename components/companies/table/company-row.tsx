@@ -1,8 +1,8 @@
 "use client";
 
 import type { MouseEvent } from "react";
-import Avatar from "@/components/_ui/avatar";
-import Button from "@/components/_ui/button";
+
+
 import { Checkbox } from "@/components/_ui/checkbox";
 import Tag from "@/components/_ui/tag";
 import { TableCell, TableRow } from "@/components/_ui/table";
@@ -100,7 +100,7 @@ export default function ClassmateRow({
       </TableCell>
       <TableCell role="cell" className={cellClass("pipelineValue")}>
         <span className="flex items-center gap-1">
-          <span className="text-muted-foreground">$</span>
+          <span className="text-muted-foreground">₦</span>
           {formatMoney(classmate.pipelineValue)}
         </span>
       </TableCell>
