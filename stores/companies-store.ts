@@ -1,0 +1,1 @@
+export { useClassmatesStore as useCompaniesStore } from "./classmates-store";
