@@ -1,1 +1,0 @@
-import {defineConfig} from 'vite';import {tanstackStart} from '@tanstack/react-start/plugin/vite';import {tanstackRouter} from '@tanstack/router-plugin/vite';import react from '@vitejs/plugin-react';export default defineConfig({plugins:[tanstackStart(),tanstackRouter({target:'react'}),react()]})
