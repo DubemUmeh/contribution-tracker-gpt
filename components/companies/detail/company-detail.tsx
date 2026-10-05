@@ -25,37 +25,37 @@ import {
   TAG_TONES,
   TREND_WINDOWS,
   ownerByName,
-} from "@/data/companies";
-import { useCompaniesStore } from "@/stores/companies-store";
-import BuildingIcon from "@/public/assets/images/companies/detail/building.svg";
-import XIcon from "@/public/assets/images/companies/detail/x.svg";
-import MailIcon from "@/public/assets/images/companies/detail/mail-04.svg";
-import PhoneIcon from "@/public/assets/images/companies/detail/phone.svg";
+} from "@/data/classmates";
+import { useClassmatesStore } from "@/stores/classmates-store";
+import BuildingIcon from "@/public/assets/images/classmates/detail/building.svg";
+import XIcon from "@/public/assets/images/classmates/detail/x.svg";
+import MailIcon from "@/public/assets/images/classmates/detail/mail-04.svg";
+import PhoneIcon from "@/public/assets/images/classmates/detail/phone.svg";
 
 const WINDOW_OPTIONS = TREND_WINDOWS.map((label) => ({ value: label, label }));
 
-export default function CompanyDetail() {
-  const detailId = useCompaniesStore((state) => state.detailId);
-  const detailOpen = useCompaniesStore((state) => state.detailOpen);
-  const companies = useCompaniesStore((state) => state.companies);
-  const closeDetail = useCompaniesStore((state) => state.closeDetail);
-  const openProfile = useCompaniesStore((state) => state.openProfile);
+export default function ClassmateDetail() {
+  const detailId = useClassmatesStore((state) => state.detailId);
+  const detailOpen = useClassmatesStore((state) => state.detailOpen);
+  const classmates = useClassmatesStore((state) => state.classmates);
+  const closeDetail = useClassmatesStore((state) => state.closeDetail);
+  const openProfile = useClassmatesStore((state) => state.openProfile);
   const [trendWindow, setTrendWindow] = useState(TREND_WINDOWS[1]);
   const [scoreWindow, setScoreWindow] = useState(TREND_WINDOWS[1]);
 
-  const company = companies.find((item) => item.id === detailId);
-  const owner = company ? ownerByName(company.owner) : null;
+  const classmate = classmates.find((item) => item.id === detailId);
+  const owner = classmate ? ownerByName(classmate.owner) : null;
 
   return (
     <Sheet
-      open={detailOpen && company !== undefined}
+      open={detailOpen && classmate !== undefined}
       onOpenChange={(open) => !open && closeDetail()}
     >
       <SheetContent side="right" className="sm:w-[560px] sm:max-w-[560px]">
         <SheetHeader>
           <div className="flex items-center gap-2">
             <BuildingIcon aria-hidden className="text-icon size-3.5" />
-            <SheetTitle>Companies Detail</SheetTitle>
+            <SheetTitle>Classmate Details</SheetTitle>
           </div>
           <SheetDescription className="sr-only">
             Account summary, pipeline health, activity and score cards
@@ -72,15 +72,15 @@ export default function CompanyDetail() {
           </SheetClose>
         </SheetHeader>
 
-        {company && owner && (
+        {classmate && owner && (
           <ScrollArea className="min-h-0 flex-1">
             <div className="flex items-start gap-3 p-5 shadow-[inset_0_-1px_0_var(--line-strong)]">
               <span className="bg-muted flex size-[50px] shrink-0 items-center justify-center rounded-[12.5px] shadow-[0px_6.25px_6.25px_0px_rgba(15,15,15,0.24),0px_0px_0px_1.563px_#232323]">
-                {company.logo ? (
+                {classmate.logo ? (
                   <Asset
                     type="image"
-                    src={company.logo}
-                    alt={`${company.name} logo`}
+                    src={classmate.logo}
+                    alt={`${classmate.name} logo`}
                     width={1}
                     height={1}
                     fit="contain"
@@ -88,14 +88,14 @@ export default function CompanyDetail() {
                   />
                 ) : (
                   <span className="h2-style text-soft">
-                    {company.name.slice(0, 1)}
+                    {classmate.name.slice(0, 1)}
                   </span>
                 )}
               </span>
               <div className="flex min-w-0 flex-col gap-3">
-                <h2 className="truncate">{company.name}</h2>
+                <h2 className="truncate">{classmate.name}</h2>
                 <div className="flex flex-wrap items-center gap-[3px]">
-                  {company.tags.map((tag) => (
+                  {classmate.tags.map((tag) => (
                     <Tag key={tag} tone={TAG_TONES[tag]} size="sm">
                       {tag}
                     </Tag>
@@ -128,7 +128,7 @@ export default function CompanyDetail() {
             </DetailSection>
 
             <DetailSection title="Pipeline health">
-              <PipelineHealth company={company} />
+              <PipelineHealth classmate={classmate} />
             </DetailSection>
 
             <DetailSection
@@ -142,7 +142,7 @@ export default function CompanyDetail() {
                 />
               }
             >
-              <ActivityTrend company={company} />
+              <ActivityTrend classmate={classmate} />
             </DetailSection>
 
             <DetailSection

@@ -4,30 +4,30 @@ import Button from "@/components/_ui/button";
 import { ScrollArea } from "@/components/_ui/scroll-area";
 import SidebarNavItem from "./sidebar-nav-item";
 import SidebarSection from "./sidebar-section";
-import { useCompaniesStore } from "@/stores/companies-store";
+import { useClassmatesStore } from "@/stores/classmates-store";
 import Logo from "@/public/assets/images/_common/logo.svg";
-import BuildingIcon from "@/public/assets/images/companies/sidebar/building.svg";
-import ClipboardIcon from "@/public/assets/images/companies/sidebar/clipboard.svg";
-import BarChartIcon from "@/public/assets/images/companies/sidebar/bar-chart.svg";
-import ListIcon from "@/public/assets/images/companies/sidebar/list.svg";
-import BookClosedIcon from "@/public/assets/images/companies/sidebar/book-closed.svg";
-import MailIcon from "@/public/assets/images/companies/sidebar/mail.svg";
-import TargetIcon from "@/public/assets/images/companies/sidebar/target-05.svg";
-import TargetAltIcon from "@/public/assets/images/companies/sidebar/target-03.svg";
-import UsersIcon from "@/public/assets/images/companies/sidebar/users.svg";
-import BarChartAltIcon from "@/public/assets/images/companies/sidebar/bar-chart-10.svg";
-import AlertTriangleIcon from "@/public/assets/images/companies/sidebar/alert-triangle.svg";
-import DotYellow from "@/public/assets/images/companies/sidebar/dot-yellow.svg";
-import DotPink from "@/public/assets/images/companies/sidebar/dot-pink.svg";
-import DotPurple from "@/public/assets/images/companies/sidebar/dot-purple.svg";
-import UserPlusIcon from "@/public/assets/images/companies/sidebar/user-plus.svg";
-import MessageQuestionIcon from "@/public/assets/images/companies/sidebar/message-question.svg";
-import WalletIcon from "@/public/assets/images/companies/sidebar/wallet.svg";
+import BuildingIcon from "@/public/assets/images/classmates/sidebar/building.svg";
+import ClipboardIcon from "@/public/assets/images/classmates/sidebar/clipboard.svg";
+import BarChartIcon from "@/public/assets/images/classmates/sidebar/bar-chart.svg";
+import ListIcon from "@/public/assets/images/classmates/sidebar/list.svg";
+import BookClosedIcon from "@/public/assets/images/classmates/sidebar/book-closed.svg";
+import MailIcon from "@/public/assets/images/classmates/sidebar/mail.svg";
+import TargetIcon from "@/public/assets/images/classmates/sidebar/target-05.svg";
+import TargetAltIcon from "@/public/assets/images/classmates/sidebar/target-03.svg";
+import UsersIcon from "@/public/assets/images/classmates/sidebar/users.svg";
+import BarChartAltIcon from "@/public/assets/images/classmates/sidebar/bar-chart-10.svg";
+import AlertTriangleIcon from "@/public/assets/images/classmates/sidebar/alert-triangle.svg";
+import DotYellow from "@/public/assets/images/classmates/sidebar/dot-yellow.svg";
+import DotPink from "@/public/assets/images/classmates/sidebar/dot-pink.svg";
+import DotPurple from "@/public/assets/images/classmates/sidebar/dot-purple.svg";
+import UserPlusIcon from "@/public/assets/images/classmates/sidebar/user-plus.svg";
+import MessageQuestionIcon from "@/public/assets/images/classmates/sidebar/message-question.svg";
+import WalletIcon from "@/public/assets/images/classmates/sidebar/wallet.svg";
 
 const BASE_COMPANY_COUNT = 223;
 
 export default function SidebarContent() {
-  const companyCount = useCompaniesStore((state) => state.companies.length);
+  const classmateCount = useClassmatesStore((state) => state.classmates.length);
 
   return (
     <div className="flex h-full min-h-0 flex-col">
@@ -35,10 +35,10 @@ export default function SidebarContent() {
         <Logo aria-hidden className="size-8 shrink-0 overflow-visible" />
         <div className="flex min-w-0 flex-col gap-1">
           <span className="lead-style block truncate font-medium tracking-[-0.01em]">
-            Sales CRM
+            Contribution Tracker
           </span>
           <span className="caption-style text-subtle block truncate">
-            Company pipeline
+            Class contribution workspace
           </span>
         </div>
       </div>
@@ -48,38 +48,38 @@ export default function SidebarContent() {
           <SidebarSection className="border-sidebar-border border-b">
             <SidebarNavItem
               icon={BuildingIcon}
-              label="Companies"
-              count={BASE_COMPANY_COUNT + companyCount}
+              label="Classmates"
+              count={BASE_COMPANY_COUNT + classmateCount}
               active
             />
-            <SidebarNavItem icon={ClipboardIcon} label="Deals Board" />
-            <SidebarNavItem icon={BarChartIcon} label="Forecast" count={9} />
-            <SidebarNavItem icon={ListIcon} label="Activities" />
-            <SidebarNavItem icon={BookClosedIcon} label="Contacts" count={38} />
-            <SidebarNavItem icon={MailIcon} label="Email Sequences" />
+            <SidebarNavItem icon={ClipboardIcon} label="Contribution Events" />
+            <SidebarNavItem icon={BarChartIcon} label="Participation" count={9} />
+            <SidebarNavItem icon={ListIcon} label="Activity" />
+            <SidebarNavItem icon={BookClosedIcon} label="Class Roster" count={38} />
+            <SidebarNavItem icon={MailIcon} label="Imports" />
           </SidebarSection>
 
           <SidebarSection
             title="Team"
             className="border-sidebar-border border-b"
           >
-            <SidebarNavItem icon={TargetIcon} label="Strategic AEs" />
-            <SidebarNavItem icon={TargetAltIcon} label="Mid Market" />
-            <SidebarNavItem icon={UsersIcon} label="SDR Team" />
+            <SidebarNavItem icon={TargetIcon} label="Active Events" />
+            <SidebarNavItem icon={TargetAltIcon} label="Classmates" />
+            <SidebarNavItem icon={UsersIcon} label="Administrators" />
           </SidebarSection>
 
           <SidebarSection
             title="Reporting"
             className="border-sidebar-border border-b"
           >
-            <SidebarNavItem icon={BarChartAltIcon} label="Q1 Forecast" />
-            <SidebarNavItem icon={AlertTriangleIcon} label="Slipping Deals" />
+            <SidebarNavItem icon={BarChartAltIcon} label="Q1 Participation" />
+            <SidebarNavItem icon={AlertTriangleIcon} label="Missed Contributions" />
           </SidebarSection>
 
-          <SidebarSection title="Pipelines">
-            <SidebarNavItem icon={DotYellow} label="North America" />
-            <SidebarNavItem icon={DotPink} label="EMEA Enterprise" />
-            <SidebarNavItem icon={DotPurple} label="APAC Expansion" />
+          <SidebarSection title="Events">
+            <SidebarNavItem icon={DotYellow} label="Current Event" />
+            <SidebarNavItem icon={DotPink} label="Past Events" />
+            <SidebarNavItem icon={DotPurple} label="Archived Events" />
           </SidebarSection>
         </nav>
       </ScrollArea>

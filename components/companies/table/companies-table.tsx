@@ -10,7 +10,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/_ui/table";
-import CompanyRow from "./company-row";
+import ClassmateRow from "./classmate-row";
 import TableFooter from "./table-footer";
 import {
   TABLE_CELL_CLASS,
@@ -18,38 +18,38 @@ import {
   TABLE_GRID_CLASS,
   TABLE_ROW_CLASS,
 } from "./table-columns";
-import { filterCompanies } from "@/lib/companies";
+import { filterClassmates } from "@/lib/classmates";
 import { cn } from "@/lib/utils";
-import { useCompaniesStore } from "@/stores/companies-store";
+import { useClassmatesStore } from "@/stores/classmates-store";
 
-export default function CompaniesTable() {
-  const companies = useCompaniesStore((state) => state.companies);
-  const sortBy = useCompaniesStore((state) => state.sortBy);
-  const owner = useCompaniesStore((state) => state.owner);
-  const stage = useCompaniesStore((state) => state.stage);
-  const activityWindow = useCompaniesStore((state) => state.activityWindow);
-  const selectedIds = useCompaniesStore((state) => state.selectedIds);
-  const detailId = useCompaniesStore((state) => state.detailId);
-  const detailOpen = useCompaniesStore((state) => state.detailOpen);
-  const toggleSelected = useCompaniesStore((state) => state.toggleSelected);
-  const setSelected = useCompaniesStore((state) => state.setSelected);
-  const openDetail = useCompaniesStore((state) => state.openDetail);
-  const openProfile = useCompaniesStore((state) => state.openProfile);
+export default function ClassmatesTable() {
+  const classmates = useClassmatesStore((state) => state.classmates);
+  const sortBy = useClassmatesStore((state) => state.sortBy);
+  const owner = useClassmatesStore((state) => state.owner);
+  const stage = useClassmatesStore((state) => state.stage);
+  const activityWindow = useClassmatesStore((state) => state.activityWindow);
+  const selectedIds = useClassmatesStore((state) => state.selectedIds);
+  const detailId = useClassmatesStore((state) => state.detailId);
+  const detailOpen = useClassmatesStore((state) => state.detailOpen);
+  const toggleSelected = useClassmatesStore((state) => state.toggleSelected);
+  const setSelected = useClassmatesStore((state) => state.setSelected);
+  const openDetail = useClassmatesStore((state) => state.openDetail);
+  const openProfile = useClassmatesStore((state) => state.openProfile);
 
   const visible = useMemo(
-    () => filterCompanies(companies, { sortBy, owner, stage, activityWindow }),
-    [companies, sortBy, owner, stage, activityWindow],
+    () => filterClassmates(classmates, { sortBy, owner, stage, activityWindow }),
+    [classmates, sortBy, owner, stage, activityWindow],
   );
 
-  const selectedVisible = visible.filter((company) =>
-    selectedIds.includes(company.id),
+  const selectedVisible = visible.filter((classmate) =>
+    selectedIds.includes(classmate.id),
   );
   const allSelected =
     visible.length > 0 && selectedVisible.length === visible.length;
   const someSelected = selectedVisible.length > 0 && !allSelected;
 
   function toggleAll() {
-    setSelected(allSelected ? [] : visible.map((company) => company.id));
+    setSelected(allSelected ? [] : visible.map((classmate) => classmate.id));
   }
 
   return (
@@ -75,7 +75,7 @@ export default function CompaniesTable() {
                               : false
                         }
                         onCheckedChange={toggleAll}
-                        aria-label="Select all companies"
+                        aria-label="Select all classmates"
                       />
                       {column.label}
                     </span>
@@ -87,15 +87,15 @@ export default function CompaniesTable() {
             </TableRow>
           </TableHeader>
           <TableBody role="rowgroup" className="contents">
-            {visible.map((company) => (
-              <CompanyRow
-                key={company.id}
-                company={company}
-                selected={selectedIds.includes(company.id)}
-                active={detailOpen && detailId === company.id}
-                onToggle={() => toggleSelected(company.id)}
-                onOpen={() => openDetail(company.id)}
-                onOpenOwner={() => openProfile(company.owner)}
+            {visible.map((classmate) => (
+              <ClassmateRow
+                key={classmate.id}
+                classmate={classmate}
+                selected={selectedIds.includes(classmate.id)}
+                active={detailOpen && detailId === classmate.id}
+                onToggle={() => toggleSelected(classmate.id)}
+                onOpen={() => openDetail(classmate.id)}
+                onOpenOwner={() => openProfile(classmate.owner)}
               />
             ))}
             {visible.length === 0 && (
@@ -104,7 +104,7 @@ export default function CompaniesTable() {
                   role="cell"
                   className="caption-style text-muted-foreground col-span-full flex h-[120px] items-center justify-center"
                 >
-                  No companies match the current filters.
+                  No classmates match the current filters.
                 </td>
               </TableRow>
             )}

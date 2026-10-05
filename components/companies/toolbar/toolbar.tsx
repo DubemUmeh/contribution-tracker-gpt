@@ -9,37 +9,37 @@ import {
   SORT_MENU_OPTIONS,
   STAGE_OPTIONS,
 } from "./filter-options";
-import type { SortKey } from "@/data/companies";
-import { TODAY, companiesCsvRows, filterCompanies } from "@/lib/companies";
+import type { SortKey } from "@/data/classmates";
+import { TODAY, classmatesCsvRows, filterClassmates } from "@/lib/classmates";
 import { downloadCsv } from "@/lib/csv";
-import { useCompaniesStore } from "@/stores/companies-store";
-import ShareIcon from "@/public/assets/images/companies/toolbar/share.svg";
+import { useClassmatesStore } from "@/stores/classmates-store";
+import ShareIcon from "@/public/assets/images/classmates/toolbar/share.svg";
 import PlusIcon from "@/public/assets/images/_common/plus.svg";
 
-export default function CompaniesToolbar() {
-  const sortBy = useCompaniesStore((state) => state.sortBy);
-  const owner = useCompaniesStore((state) => state.owner);
-  const stage = useCompaniesStore((state) => state.stage);
-  const activityWindow = useCompaniesStore((state) => state.activityWindow);
-  const setSortBy = useCompaniesStore((state) => state.setSortBy);
-  const setOwner = useCompaniesStore((state) => state.setOwner);
-  const setStage = useCompaniesStore((state) => state.setStage);
-  const setActivityWindow = useCompaniesStore(
+export default function ClassmatesToolbar() {
+  const sortBy = useClassmatesStore((state) => state.sortBy);
+  const owner = useClassmatesStore((state) => state.owner);
+  const stage = useClassmatesStore((state) => state.stage);
+  const activityWindow = useClassmatesStore((state) => state.activityWindow);
+  const setSortBy = useClassmatesStore((state) => state.setSortBy);
+  const setOwner = useClassmatesStore((state) => state.setOwner);
+  const setStage = useClassmatesStore((state) => state.setStage);
+  const setActivityWindow = useClassmatesStore(
     (state) => state.setActivityWindow,
   );
-  const setNewCompanyOpen = useCompaniesStore(
-    (state) => state.setNewCompanyOpen,
+  const setNewClassmateOpen = useClassmatesStore(
+    (state) => state.setNewClassmateOpen,
   );
 
   function exportCsv() {
-    const { companies } = useCompaniesStore.getState();
-    const visible = filterCompanies(companies, {
+    const { classmates } = useClassmatesStore.getState();
+    const visible = filterClassmates(classmates, {
       sortBy,
       owner,
       stage,
       activityWindow,
     });
-    downloadCsv(`companies-${TODAY}.csv`, companiesCsvRows(visible));
+    downloadCsv(`classmates-${TODAY}.csv`, classmatesCsvRows(visible));
   }
 
   return (
@@ -81,10 +81,10 @@ export default function CompaniesToolbar() {
         <Button
           variant="primary"
           size="sm"
-          onClick={() => setNewCompanyOpen(true)}
+          onClick={() => setNewClassmateOpen(true)}
         >
           <PlusIcon aria-hidden className="size-3" />
-          New Company
+          New Event
         </Button>
       </div>
     </div>

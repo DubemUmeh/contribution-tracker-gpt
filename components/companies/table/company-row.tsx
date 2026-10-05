@@ -8,8 +8,8 @@ import Tag from "@/components/_ui/tag";
 import { TableCell, TableRow } from "@/components/_ui/table";
 import SegmentBar from "@/components/_common/segment-bar";
 import Sparkline from "@/components/_common/sparkline";
-import { TAG_TONES, ownerByName, type Company } from "@/data/companies";
-import { formatDate, formatMoney, splitTags } from "@/lib/companies";
+import { TAG_TONES, ownerByName, type Classmate } from "@/data/classmates";
+import { formatDate, formatMoney, splitTags } from "@/lib/classmates";
 import { cn } from "@/lib/utils";
 import {
   TABLE_CELL_CLASS,
@@ -18,10 +18,10 @@ import {
   type TableColumnKey,
 } from "./table-columns";
 import CalendarIcon from "@/public/assets/images/_common/calendar.svg";
-import DotsIcon from "@/public/assets/images/companies/table/dots-horizontal.svg";
+import DotsIcon from "@/public/assets/images/classmates/table/dots-horizontal.svg";
 
-type CompanyRowProps = {
-  company: Company;
+type ClassmateRowProps = {
+  classmate: Classmate;
   selected: boolean;
   active: boolean;
   onToggle: () => void;
@@ -37,16 +37,16 @@ function stop(event: MouseEvent) {
   event.stopPropagation();
 }
 
-export default function CompanyRow({
-  company,
+export default function ClassmateRow({
+  classmate,
   selected,
   active,
   onToggle,
   onOpen,
   onOpenOwner,
-}: CompanyRowProps) {
-  const owner = ownerByName(company.owner);
-  const { visible, hidden } = splitTags(company.tags);
+}: ClassmateRowProps) {
+  const owner = ownerByName(classmate.owner);
+  const { visible, hidden } = splitTags(classmate.tags);
 
   return (
     <TableRow
@@ -64,9 +64,9 @@ export default function CompanyRow({
             checked={selected}
             onCheckedChange={onToggle}
             onClick={stop}
-            aria-label={`Select ${company.name}`}
+            aria-label={`Select ${classmate.name}`}
           />
-          {company.name}
+          {classmate.name}
         </span>
       </TableCell>
       <TableCell role="cell" className={cellClass("segment")}>
@@ -96,22 +96,22 @@ export default function CompanyRow({
         </Button>
       </TableCell>
       <TableCell role="cell" className={cellClass("openDeals")}>
-        {company.openDeals}
+        {classmate.openDeals}
       </TableCell>
       <TableCell role="cell" className={cellClass("pipelineValue")}>
         <span className="flex items-center gap-1">
           <span className="text-muted-foreground">$</span>
-          {formatMoney(company.pipelineValue)}
+          {formatMoney(classmate.pipelineValue)}
         </span>
       </TableCell>
       <TableCell role="cell" className={cellClass("winProbability")}>
         <span className="flex items-center gap-2">
-          <SegmentBar percent={company.winProbability} className="w-[74px]" />
-          <span className="w-[4ch] text-right">{company.winProbability}%</span>
+          <SegmentBar percent={classmate.winProbability} className="w-[74px]" />
+          <span className="w-[4ch] text-right">{classmate.winProbability}%</span>
         </span>
       </TableCell>
       <TableCell role="cell" className={cellClass("trend")}>
-        <Sparkline values={company.trend} />
+        <Sparkline values={classmate.trend} />
       </TableCell>
       <TableCell role="cell" className={cellClass("lastInteraction")}>
         <span className="flex items-center gap-1">
@@ -120,10 +120,10 @@ export default function CompanyRow({
             className="text-foreground size-3.5 shrink-0"
           />
           <span className="tabular-nums">
-            {formatDate(company.lastInteraction.date)}
+            {formatDate(classmate.lastInteraction.date)}
           </span>
           <span aria-hidden className="mx-[3px] h-2 w-px bg-white/15" />
-          {company.lastInteraction.label}
+          {classmate.lastInteraction.label}
         </span>
       </TableCell>
       <TableCell role="cell" className={cellClass("action")} onClick={stop}>
@@ -131,7 +131,7 @@ export default function CompanyRow({
           variant="ghost"
           size="icon-sm"
           className={cn("text-foreground", active && "bg-white/6")}
-          aria-label={`Open ${company.name} details`}
+          aria-label={`Open ${classmate.name} details`}
           onClick={onOpen}
         >
           <DotsIcon aria-hidden className="size-3" />
