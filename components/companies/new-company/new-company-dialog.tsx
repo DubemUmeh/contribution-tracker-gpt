@@ -31,7 +31,7 @@ import {
   OWNERS,
   SEGMENTS,
   STAGES,
-  type Event,
+  type Company,
   type Segment,
   type Stage,
 } from "@/data/companies";
