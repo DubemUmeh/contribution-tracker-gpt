@@ -7,7 +7,7 @@ import Notifications from "./notifications/notifications";
 import { CURRENT_USER } from "@/data/classmates";
 import { useClassmatesStore } from "@/stores/classmates-store";
 import MenuIcon from "@/public/assets/images/_common/menu.svg";
-import ActiveDot from "@/public/assets/images/classmates/header/active-dot.svg";
+import ActiveDot from "@/public/assets/images/companies/header/active-dot.svg";
 import SearchIcon from "@/public/assets/images/_common/search.svg";
 
 const TABS = [

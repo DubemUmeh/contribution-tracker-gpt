@@ -27,10 +27,10 @@ import {
   ownerByName,
 } from "@/data/classmates";
 import { useClassmatesStore } from "@/stores/classmates-store";
-import BuildingIcon from "@/public/assets/images/classmates/detail/building.svg";
-import XIcon from "@/public/assets/images/classmates/detail/x.svg";
-import MailIcon from "@/public/assets/images/classmates/detail/mail-04.svg";
-import PhoneIcon from "@/public/assets/images/classmates/detail/phone.svg";
+import BuildingIcon from "@/public/assets/images/companies/detail/building.svg";
+import XIcon from "@/public/assets/images/companies/detail/x.svg";
+import MailIcon from "@/public/assets/images/companies/detail/mail-04.svg";
+import PhoneIcon from "@/public/assets/images/companies/detail/phone.svg";
 
 const WINDOW_OPTIONS = TREND_WINDOWS.map((label) => ({ value: label, label }));
 

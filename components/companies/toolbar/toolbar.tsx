@@ -13,7 +13,7 @@ import type { SortKey } from "@/data/classmates";
 import { TODAY, classmatesCsvRows, filterClassmates } from "@/lib/classmates";
 import { downloadCsv } from "@/lib/csv";
 import { useClassmatesStore } from "@/stores/classmates-store";
-import ShareIcon from "@/public/assets/images/classmates/toolbar/share.svg";
+import ShareIcon from "@/public/assets/images/companies/toolbar/share.svg";
 import PlusIcon from "@/public/assets/images/_common/plus.svg";
 
 export default function ClassmatesToolbar() {
