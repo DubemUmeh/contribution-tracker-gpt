@@ -42,7 +42,7 @@ type CompaniesState = {
 export const useCompaniesStore = create<CompaniesState>((set) => ({
   companies: COMPANIES,
   ...DEFAULT_FILTERS,
-  selectedIds: ["microsoft"],
+  selectedIds: ["1"],
   detailId: null,
   detailOpen: false,
   profileName: null,

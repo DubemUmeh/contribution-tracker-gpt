@@ -24,7 +24,7 @@ import UserPlusIcon from "@/public/assets/images/classmates/sidebar/user-plus.sv
 import MessageQuestionIcon from "@/public/assets/images/classmates/sidebar/message-question.svg";
 import WalletIcon from "@/public/assets/images/classmates/sidebar/wallet.svg";
 
-const BASE_COMPANY_COUNT = 223;
+const BASE_COMPANY_COUNT = 22;
 
 export default function SidebarContent() {
   const classmateCount = useClassmatesStore((state) => state.classmates.length);
@@ -96,15 +96,15 @@ export default function SidebarContent() {
       <div className="border-sidebar-border bg-sidebar-accent flex shrink-0 items-center justify-between gap-2 border-b p-4">
         <div className="flex flex-col gap-2">
           <span className="lead-style block font-medium tracking-[-0.01em]">
-            14 Days
+            Current Event
           </span>
           <span className="caption-style text-subtle block">
-            Left on trials
+            Contribution workspace
           </span>
         </div>
         <Button variant="muted" size="md">
           <WalletIcon aria-hidden className="size-3.5" />
-          Add Billings
+          Manage Event
         </Button>
       </div>
     </div>
